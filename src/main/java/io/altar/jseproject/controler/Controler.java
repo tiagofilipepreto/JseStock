@@ -12,7 +12,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+
 
 import io.altar.jseproject.Business.BusinessEntity;
 import io.altar.jseproject.model.Entity;
@@ -40,22 +42,36 @@ public abstract class Controler <T extends BusinessEntity<E>,E extends Entity>{
 	
 	@PUT
 	@Consumes("application/json")
-	public void editProduct(E t) {
-		service.update(t);
+	public Response editProduct(E t) {
+		try {
+			service.update(t);
+			return Response.ok().build();
+		} catch (Exception e) {
+			return Response.status(404).entity(e.getMessage()).build();
+	}
 	}
 	
 	@GET
 	@Path("{id}")
 	@Produces("application/json")
-	public E getProduct(@PathParam("id")long id) {
-//		verificar se precisa BUSI_PRODDUCTS.read(sc.getValidLong("Id do producto",BUSI_PRODDUCTS.geAllIdsarray()))
-		return service.read(id);
+	public Response getProduct(@PathParam("id")long id) {
+		try {
+			return Response.ok().entity(service.read(id)).build();
+		} catch (Exception e) {
+			return Response.status(400).entity(e.getMessage()).build();
+		}
+		
 	}
 	
 	@DELETE
 	@Path("{id}")
-	public void deleteProduct(@PathParam("id")long id) {
-		service.delete(id);
+	public Response deleteProduct(@PathParam("id")long id) {
+		try {
+			service.delete(id);
+			return Response.status(204).build();
+		} catch (Exception e) {
+			return Response.status(400).entity(e.getMessage()).build();
+		}
 	}
 	
 	@GET
@@ -77,6 +93,9 @@ public abstract class Controler <T extends BusinessEntity<E>,E extends Entity>{
 	public long[] geAllIdsarray() {
 		return service.geAllIdsarray();
 	}
+	
+	
+	
 	
 	
 }

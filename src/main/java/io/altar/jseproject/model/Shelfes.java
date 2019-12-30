@@ -54,7 +54,7 @@ public class Shelfes extends Entity {
 				+ dailyPrice + "]";
 	}
 	
-
+	
 	
 	
 }

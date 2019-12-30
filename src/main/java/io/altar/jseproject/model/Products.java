@@ -24,13 +24,13 @@ public class Products extends Entity {
 	}
 
 
-	public Products(String nome,float initprice,int discount, int iva, float pvp, List<Long> shelvesId) {
+	public Products(String nome,float initprice,int discount, int iva, List<Long> shelvesId) {
 		this.nome= nome;
 		this.initprice= initprice;
 		this.discount = discount;
 		this.iva = iva;
-		this.pvp = pvp;
 		this.shelvesId = shelvesId;
+		calcoloPvp ();
 	}
 
 
@@ -51,6 +51,7 @@ public class Products extends Entity {
 
 	public void setInitprice(float initprice) {
 		this.initprice = initprice;
+		calcoloPvp ();
 	}
 
 
@@ -61,6 +62,7 @@ public class Products extends Entity {
 
 	public void setDiscount(int discount) {
 		this.discount = discount;
+		calcoloPvp ();
 	}
 
 
@@ -71,6 +73,7 @@ public class Products extends Entity {
 
 	public void setIva(int iva) {
 		this.iva = iva;
+		calcoloPvp ();
 	}
 
 
@@ -106,5 +109,12 @@ public class Products extends Entity {
 		return "Products [ID ="+getId()+",nome=" + nome + ", initprice=" + initprice + ", discount=" + discount + ", iva=" + iva
 				+ ", pvp=" + pvp + ", shelvesId=" + shelvesId + "]";
 	}
+	private void calcoloPvp () {
+		float pv = getInitprice()*(1 + (float) getIva()/100);
+		float discount1 = pv*(1* (float)getDiscount()/100);
+		float pvp =pv - discount1;
+		setPvp(pvp);
+	}
+	
 	
 }

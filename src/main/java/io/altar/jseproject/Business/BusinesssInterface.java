@@ -12,6 +12,8 @@ public interface BusinesssInterface <T extends Entity>{
 	
 	T read(long id);
 	
+	T getId(long id);
+	
 	Collection<Long> getAllIDs();
 	
 	void delete (long Id);

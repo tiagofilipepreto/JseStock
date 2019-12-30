@@ -20,24 +20,25 @@ public class BusinessProducts extends BusinessEntity <Products> implements Busin
 	}
 	@Override
 	public Products read(long id) {
-		return PROD_REP_INSTACE.getEntity(id);
+		return getValidEntity(id);
 	}
 
 	@Override
-	public void delete(long Id) {
-		 List <Long>shelvesIdAntigos = read(Id).getShelvesId();
-		PROD_REP_INSTACE.removeEntity(Id);
-		BUSINESS_SHELVES.updateProductsId(shelvesIdAntigos,new ArrayList<Long>(),Id);
+	public void delete(long id) {
+		getValidEntity(id);
+		 List <Long>shelvesIdAntigos = read(id).getShelvesId();
+		PROD_REP_INSTACE.removeEntity(id);
+		BUSINESS_SHELVES.updateProductsId(shelvesIdAntigos,new ArrayList<Long>(),id);
 		
 	}
 	
 	@Override
 	public void update(Products t) {
-		 List <Long>shelvesIdAntigos = read(t.getId()).getShelvesId();
+		getValidEntity(t.getId());
+		List <Long>shelvesIdAntigos = read(t.getId()).getShelvesId();
 		PROD_REP_INSTACE.editEntity(t);
 		BUSINESS_SHELVES.updateProductsId(shelvesIdAntigos,t.getShelvesId(),t.getId());
-	}
-	
+		}
 	
 	@Override
 	public boolean isEmpty() {
@@ -78,5 +79,27 @@ public class BusinessProducts extends BusinessEntity <Products> implements Busin
 	public Collection<Products> getAll() {
 		return PROD_REP_INSTACE.getAll();
 	}
+	public String getName() {
+		return "O Producto";
+	}
+	@Override
+	public Products getId(long id) {
+		return PROD_REP_INSTACE.getEntity(id);
+	}
+	@Override
+	public Products validEntity(Products t) {
+		String errormsg ="";
+		if (t.getNome().trim().isEmpty()) {
+			errormsg += "Tem de ter nome";
+		}
+		
+		
+		
+		if (errormsg.isEmpty()) {
+			throw new IllegalArgumentException(errormsg);
+		}
+		return t;
+	}
+	
 	
 }

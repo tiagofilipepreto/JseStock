@@ -4,7 +4,9 @@ import java.util.Collection;
 
 import io.altar.jseproject.model.Entity;
 
-public class BusinessEntity <T extends Entity> {
+public abstract class BusinessEntity <T extends Entity> {
+	
+	
 
 	public void create(T t) {
 		// TODO Auto-generated method stub
@@ -32,6 +34,7 @@ public class BusinessEntity <T extends Entity> {
 		return null;
 	}
 
+	protected abstract T getId(long id);
 	public boolean isEmpty() {
 		// TODO Auto-generated method stub
 		return false;
@@ -41,7 +44,18 @@ public class BusinessEntity <T extends Entity> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public T getValidEntity( long id) {
+		T entity = getId(id);
+		if (entity == null) {
+			throw new IllegalArgumentException(String.format("%s com o id = %d nao existe",getName() , id));
+		}
+		return entity;
+	}
+	
 
+	protected abstract String getName();
+	
+	
 	
 
 }

@@ -19,19 +19,21 @@ public class BusinessShelf extends BusinessEntity<Shelfes> implements BusinessSh
 	}
 	@Override
 	public Shelfes read(long id) {
-		return SHELF_REP_INSTACE.getEntity(id);
+		return getValidEntity(id);
 	}
 
 	@Override
-	public void delete(long Id) {
-		long idProduct =read(Id).getProductId();
-		BUSINESS_PRODUCTS.updateProductsId(Id,0,idProduct);
-		SHELF_REP_INSTACE.removeEntity(Id);
+	public void delete(long id) {
+		getValidEntity(id);
+		long idProduct =read(id).getProductId();
+		BUSINESS_PRODUCTS.updateProductsId(id,0,idProduct);
+		SHELF_REP_INSTACE.removeEntity(id);
 		
 		
 	}
 	@Override
 	public void update(Shelfes t) {
+		getValidEntity(t.getId());
 		 long ProductIdAntigo = read(t.getId()).getProductId();
 		BUSINESS_PRODUCTS.updateProductsId(t.getId(),t.getProductId(),ProductIdAntigo);
 		SHELF_REP_INSTACE.editEntity(t);
@@ -71,6 +73,9 @@ public class BusinessShelf extends BusinessEntity<Shelfes> implements BusinessSh
 		return  SHELF_REP_INSTACE.getShelfCenas();
 		
 	}
+	public String getName() {
+		return "A Prateleira";
+	}
 	
 	@Override
 	public void printaAll() {
@@ -80,5 +85,10 @@ public class BusinessShelf extends BusinessEntity<Shelfes> implements BusinessSh
 	@Override
 	public Collection<Shelfes> getAll() {
 		return SHELF_REP_INSTACE.getAll();
+	}
+	@Override
+	public Shelfes getId(long id) {
+		
+		return SHELF_REP_INSTACE.getEntity(id);
 	}
 }
