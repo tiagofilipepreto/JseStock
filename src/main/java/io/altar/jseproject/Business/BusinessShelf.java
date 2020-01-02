@@ -91,4 +91,21 @@ public class BusinessShelf extends BusinessEntity<Shelfes> implements BusinessSh
 		
 		return SHELF_REP_INSTACE.getEntity(id);
 	}
+	@Override
+	public Shelfes validEntityShelfes(Shelfes t) {
+		String errormsg = "";
+		if (t.getCapacidade()<=0) {
+			errormsg += "A capacidade tem de ser maios que 0. \n";
+		}
+		if (t.getDailyPrice()<0) {
+			errormsg += "O preco diario tem de ser maios que 0. \n";
+		}
+		if (!) {
+			
+		}
+		if(!errormsg.isEmpty()) {
+			throw new IllegalArgumentException(errormsg);
+		}
+		return t;
+	}
 }

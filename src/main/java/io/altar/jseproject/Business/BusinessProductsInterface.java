@@ -9,5 +9,5 @@ public interface BusinessProductsInterface extends BusinesssInterface<Products> 
 	ProductRepository PROD_REP_INSTACE = ProductRepository.getInstance();
 	void updateProductsId(long ShelfeId, long ProductIdNovo, long ProductIdAntigo);
 	ArrayList<Long> getshelvesId();
-	Products validEntity(Products t);
+	Products validEntityProducts(Products t);
 }

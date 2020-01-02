@@ -36,8 +36,14 @@ public abstract class Controler <T extends BusinessEntity<E>,E extends Entity>{
 	
 	@POST
 	@Consumes("application/json")
-	public void addProduct(E t) {
-		service.create(t);
+	public Response addProduct(E t) {
+		try {
+			service.create(t);
+			return Response.ok().build();
+		} catch (Exception e) {
+			return Response.status(404).entity(e.getMessage()).build();
+		}
+		
 	}
 	
 	@PUT
