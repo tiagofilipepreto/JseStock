@@ -57,7 +57,7 @@ public class BusinessProducts extends BusinessEntity <Products> implements Busin
 		return null;
 	}
 	@Override
-	public long[] geAllIdsarray() {
+	public long[] getAllIdsarray() {
 		return PROD_REP_INSTACE.geAllIdsarray();
 	}
 	@Override

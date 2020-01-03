@@ -8,7 +8,7 @@ public class ProductConsult extends State {
 			System.out.println("Nao tem Productos");
 			return 1;
 		}
-		System.out.println(BUSI_PRODDUCTS.read(sc.getValidLong("Id do producto",BUSI_PRODDUCTS.geAllIdsarray())));
+		System.out.println(BUSI_PRODDUCTS.read(sc.getValidLong("Id do producto",BUSI_PRODDUCTS.getAllIdsarray())));
 		return 1;
 	}
 

@@ -12,7 +12,7 @@ public class ProductEdit extends State {
 			System.out.println("Nao tem Productos");
 			return 1;
 		}
-		Products product= BUSI_PRODDUCTS.read(sc.getValidLong("Id do producto",BUSI_PRODDUCTS.geAllIdsarray()));
+		Products product= BUSI_PRODDUCTS.read(sc.getValidLong("Id do producto",BUSI_PRODDUCTS.getAllIdsarray()));
 		System.out.println("Nome do Producto: "+product.getNome());
 		String nome =sc.getValue("Novo nome do producto");
 		product.setNome(nome.isEmpty()? product.getNome():nome);

@@ -8,7 +8,7 @@ public class ShelvesConsult extends State {
 			System.out.println("Nao tem prateleiras");
 			return 1;
 		}
-		System.out.println(BUSI_SHELVES.read(sc.getValidLong("Id da Prateleira",BUSI_SHELVES.geAllIdsarray())));
+		System.out.println(BUSI_SHELVES.read(sc.getValidLong("Id da Prateleira",BUSI_SHELVES.getAllIdsarray())));
 		return 1;
 	}
 

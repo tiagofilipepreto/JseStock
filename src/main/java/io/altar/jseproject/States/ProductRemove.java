@@ -8,7 +8,7 @@ public class ProductRemove extends State {
 			System.out.println("Nao tem Productos");
 			return 1;
 		}
-		long remove =sc.getValidLong("Id do producto",BUSI_PRODDUCTS.geAllIdsarray());
+		long remove =sc.getValidLong("Id do producto",BUSI_PRODDUCTS.getAllIdsarray());
 		switch (sc.getValidInt("remover:\\n 1) sim \\n 0)nao", 0, 1)) {
 		case 0:
 			break;

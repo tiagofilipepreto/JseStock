@@ -40,7 +40,7 @@ public abstract class BusinessEntity <T extends Entity> {
 		return false;
 	}
 
-	public long[] geAllIdsarray() {
+	public long[] getAllIdsarray() {
 		// TODO Auto-generated method stub
 		return null;
 	}

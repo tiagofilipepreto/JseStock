@@ -1,9 +1,12 @@
 package io.altar.jseproject.Business;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+
+import org.apache.commons.lang3.ArrayUtils;
 
 import io.altar.jseproject.model.Shelfes;
 
@@ -49,7 +52,7 @@ public class BusinessShelf extends BusinessEntity<Shelfes> implements BusinessSh
 		return null;
 	}
 	@Override
-	public long[] geAllIdsarray() {
+	public long[] getAllIdsarray() {
 		return SHELF_REP_INSTACE.geAllIdsarray();
 	}
 	@Override
@@ -100,8 +103,10 @@ public class BusinessShelf extends BusinessEntity<Shelfes> implements BusinessSh
 		if (t.getDailyPrice()<0) {
 			errormsg += "O preco diario tem de ser maios que 0. \n";
 		}
-		if (!) {
-			
+		Long[] inputBoxed = ArrayUtils.toObject(BUSINESS_PRODUCTS.getAllIdsarray());
+		List<Long> productsId =Arrays.asList(inputBoxed);
+		if (!productsId.contains(t.getProductId())) {
+			errormsg += "Productos disponiveis" + productsId;
 		}
 		if(!errormsg.isEmpty()) {
 			throw new IllegalArgumentException(errormsg);

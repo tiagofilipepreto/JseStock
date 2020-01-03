@@ -8,7 +8,7 @@ public class ShelvesRemove extends State {
 			System.out.println("Nao tem prateleiras");
 			return 1;
 		}
-		long remove =sc.getValidLong("Id do producto",BUSI_SHELVES.geAllIdsarray());
+		long remove =sc.getValidLong("Id do producto",BUSI_SHELVES.getAllIdsarray());
 		switch (sc.getValidInt("remover:\\n 1) sim \\n 0)nao", 0, 1)) {
 		case 0:
 			break;

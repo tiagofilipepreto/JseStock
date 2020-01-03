@@ -12,7 +12,7 @@ public class ShelvesEdit extends State {
 			return 1;
 		}
 
-		Shelfes shelve= BUSI_SHELVES.read(sc.getValidLong("Id do producto",BUSI_SHELVES.geAllIdsarray()));
+		Shelfes shelve= BUSI_SHELVES.read(sc.getValidLong("Id do producto",BUSI_SHELVES.getAllIdsarray()));
 		
 		System.out.println("apacidade da prateleira: "+shelve.getCapacidade());
 		int capacidade= sc.getInt("Colocar capacidade da shelf:");
@@ -29,7 +29,7 @@ public class ShelvesEdit extends State {
 			if(shelve.getProductId()!=0) {
 				System.out.println("Preco diario da prateleira: "+shelve.getProductId());
 			}
-			long productId= sc.getValidLong("colocar id do Producto", BUSI_PRODDUCTS.geAllIdsarray());
+			long productId= sc.getValidLong("colocar id do Producto", BUSI_PRODDUCTS.getAllIdsarray());
 			if (productId !=-1) {
 				shelve.setProductId(productId);
 			}

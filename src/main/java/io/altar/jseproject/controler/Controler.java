@@ -97,7 +97,7 @@ public abstract class Controler <T extends BusinessEntity<E>,E extends Entity>{
 	@Path("getAllIds")
 	@Produces("application/json")
 	public long[] geAllIdsarray() {
-		return service.geAllIdsarray();
+		return service.getAllIdsarray();
 	}
 	
 	

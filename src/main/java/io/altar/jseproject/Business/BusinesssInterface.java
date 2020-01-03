@@ -24,7 +24,7 @@ public interface BusinesssInterface <T extends Entity>{
 	
 	void printaAll();
 	
-	long[] geAllIdsarray();
+	long[] getAllIdsarray();
 	
 	Collection<T> getAll();
 	
